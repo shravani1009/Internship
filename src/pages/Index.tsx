@@ -50,21 +50,21 @@ const Index = () => {
       name: 'Sarah Johnson',
       role: 'Product Designer',
       image: 'https://randomuser.me/api/portraits/women/32.jpg',
-      quote: 'The courses offered here completely transformed my career. The instructors are top-notch and the content is extremely relevant to today's industry demands.',
+      quote: 'The courses offered here completely transformed my career. The instructors are top-notch and the content is extremely relevant to today\'s industry demands.',
       rating: 5
     },
     {
       name: 'Michael Chang',
       role: 'Frontend Developer',
       image: 'https://randomuser.me/api/portraits/men/78.jpg',
-      quote: 'I've taken multiple web development courses, and they've all been exceptional. The practical approach helped me land my dream job within 3 months of completing the course.',
+      quote: 'I\'ve taken multiple web development courses, and they\'ve all been exceptional. The practical approach helped me land my dream job within 3 months of completing the course.',
       rating: 5
     },
     {
       name: 'Emma Wilson',
       role: 'Marketing Director',
       image: 'https://randomuser.me/api/portraits/women/58.jpg',
-      quote: 'The digital marketing course gave me insights that I couldn't find anywhere else. Highly recommend for anyone looking to excel in the marketing field.',
+      quote: 'The digital marketing course gave me insights that I couldn\'t find anywhere else. Highly recommend for anyone looking to excel in the marketing field.',
       rating: 4
     }
   ];
