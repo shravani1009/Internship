@@ -4,21 +4,45 @@ import { ChevronRight } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const backgroundImages = [
+    "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80"
+  ];
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Image rotation effect
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Change image every 5 seconds
+    
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden bg-black">
-      {/* Background image and overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80" 
-          alt="Background" 
-          className="w-full h-full object-cover opacity-20"
-        />
-      </div>
+      {/* Background images with fade transition */}
+      {backgroundImages.map((imgSrc, index) => (
+        <div 
+          key={imgSrc}
+          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${
+            currentImageIndex === index ? 'opacity-20' : 'opacity-0'
+          }`}
+        >
+          <img 
+            src={imgSrc} 
+            alt={`Background ${index + 1}`} 
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ))}
+      
       <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/80 to-black/90 z-1"></div>
       <div className="absolute top-0 left-0 w-full h-full opacity-10 z-2">
         <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-gold blur-[100px]"></div>
