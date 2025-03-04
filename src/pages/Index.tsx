@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Hero from '../components/Hero';
 import CourseOverview from '../components/CourseOverview';
 import ServiceCard from '../components/ServiceCard';
+import WhyChooseUs from '../components/WhyChooseUs';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { BookOpen, Users, Award, PenTool, BarChart, Headphones, Star, ChevronRight } from 'lucide-react';
@@ -103,6 +104,9 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
+      
       {/* Course Overview Section */}
       <CourseOverview />
       
@@ -123,8 +127,7 @@ const Index = () => {
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className="rounded-2xl bg-gray-900 p-8 border border-gray-800 transition-all duration-300 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 animate-float"
-                style={{ animationDelay: `${index * 0.3}s` }}
+                className="rounded-2xl bg-gray-900 p-8 border border-gray-800 transition-all duration-300 hover:border-gold/30 hover:transform hover:translate-y-[-5px] hover:shadow-lg hover:shadow-gold/5"
               >
                 <div className="flex items-center mb-6">
                   <img 

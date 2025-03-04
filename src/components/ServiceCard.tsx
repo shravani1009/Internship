@@ -11,10 +11,9 @@ interface ServiceCardProps {
 const ServiceCard = ({ title, description, icon, delay = 0 }: ServiceCardProps) => {
   return (
     <div 
-      className="floating-card animate-float group"
+      className="rounded-2xl bg-black/60 backdrop-blur-sm p-8 border border-gray-800 transition-all duration-300 hover:border-gold/30 hover:transform hover:translate-y-[-5px] hover:shadow-lg hover:shadow-gold/5 group"
       style={{ 
         animationDelay: `${delay}s`,
-        animationDuration: '6s' 
       }}
     >
       <div className="bg-black/40 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 text-gold group-hover:bg-gold group-hover:text-black transition-all duration-300">
