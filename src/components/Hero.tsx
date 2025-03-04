@@ -61,17 +61,11 @@ const Hero = () => {
           
           <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="relative z-10 rounded-2xl overflow-hidden border border-gold/20 shadow-[0_0_30px_rgba(176,147,76,0.2)]">
-              <div className="aspect-w-16 aspect-h-9 bg-gradient-to-tr from-black to-gray-900">
-                <div className="flex flex-col items-center justify-center p-6 text-center">
-                  <div className="w-16 h-16 rounded-full bg-gold flex items-center justify-center mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-black">
-                      <path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z"></path>
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Watch Course Preview</h3>
-                  <p className="text-gray-300 text-sm">See what makes our courses exceptional</p>
-                </div>
-              </div>
+              <img 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=1200&h=800" 
+                alt="Professional learning environment" 
+                className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
+              />
             </div>
             
             {/* Decorative elements */}
