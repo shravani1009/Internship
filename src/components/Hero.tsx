@@ -11,9 +11,16 @@ const Hero = () => {
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden bg-black">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black/95"></div>
-      <div className="absolute top-0 left-0 w-full h-full opacity-10">
+      {/* Background image and overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80" 
+          alt="Background" 
+          className="w-full h-full object-cover opacity-20"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/80 to-black/90 z-1"></div>
+      <div className="absolute top-0 left-0 w-full h-full opacity-10 z-2">
         <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-gold blur-[100px]"></div>
         <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-gold blur-[120px]"></div>
       </div>
