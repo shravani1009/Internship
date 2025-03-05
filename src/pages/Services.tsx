@@ -1,10 +1,11 @@
-
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Users, BookOpen, Award, PenTool, BarChart, Headphones, Check, ArrowRight } from 'lucide-react';
 
 const Services = () => {
+  const [showAllCourses, setShowAllCourses] = useState(false);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -91,9 +92,9 @@ const Services = () => {
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-gold/20 text-gold border border-gold/40 inline-block mb-4">
-              Our Services
-            </span>
+          <span className="px-5 py-3 rounded-full text-base font-medium bg-gold/20 text-gold border border-gold/40 inline-block mb-4">
+            Our Services
+          </span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Comprehensive <span className="text-gold-gradient">Learning Solutions</span></h1>
             <p className="text-gray-300 text-lg">
               Discover our range of services designed to provide you with a complete educational experience.
@@ -101,50 +102,162 @@ const Services = () => {
           </div>
         </div>
       </section>
-      
-      {/* Services Section */}
+
+      {/* Course Overview Section */}
       <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4 md:px-6">
+          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div 
-                key={index} 
+            {[
+              {
+                title: "Generative AI",
+                description: "Generative AI leverages transforming industries by enabling automation of creative processes and enhancing human capabilities.",
+                duration: "12 weeks",
+                level: "Advanced"
+              },
+              {
+                title: "Data Science",
+                description: "Data Science involves the extraction of insights and knowledge from large volumes of data using statistical methods, machine learning, and data visualization.",
+                duration: "24 weeks",
+                level: "Intermediate to Advanced"
+              },
+              {
+                title: "Artificial Intelligence",
+                description: "Artificial Intelligence encompasses the development of systems that can perform tasks requiring human intelligence, such as problem-solving, learning, and decision-making.",
+                duration: "20 weeks",
+                level: "Advanced"
+              },
+              {
+                title: "Machine Learning",
+                description: "Machine Learning is a subset of AI where systems learn from data to make predictions or decisions without explicit programming.",
+                duration: "16 weeks",
+                level: "Intermediate to Advanced"
+              },
+              {
+                title: "Deep Learning",
+                description: "Deep Learning, a specialized branch of Machine Learning, uses neural networks with many layers to model complex patterns in data.",
+                duration: "14 weeks",
+                level: "Advanced"
+              },
+              {
+                title: "Natural Language Processing",
+                description: "NLP is the field of AI focused on enabling computers to understand, interpret, and generate human language.",
+                duration: "12 weeks",
+                level: "Intermediate"
+              },
+              {
+                title: "Data Analytics",
+                description: "Data Analytics involves the systematic analysis of data to discover patterns, trends, and insights.",
+                duration: "10 weeks",
+                level: "Beginner to Intermediate"
+              },
+              {
+                title: "Business Analytics",
+                description: "Business Analytics involves the use of statistical methods and technologies to analyze and interpret past business performance data.",
+                duration: "8 weeks",
+                level: "Beginner"
+              },
+              {
+                title: "Web Development",
+                description: "Web Design and Development involves both front-end design, ensuring an attractive user interface, and back-end development.",
+                duration: "24 weeks",
+                level: "Beginner to Advanced"
+              },
+              {
+                title: "Android Development",
+                description: "Android Development involves coding, testing, and deploying apps that can be used on a wide range of mobile devices.",
+                duration: "16 weeks",
+                level: "Intermediate"
+              },
+              {
+                title: "Cybersecurity",
+                description: "Learn to protect systems, networks, and programs from digital attacks while understanding security protocols.",
+                duration: "20 weeks",
+                level: "Intermediate to Advanced"
+              },
+              {
+                title: "Internet of Things",
+                description: "The IOT connects everyday devices to the internet, enabling them to send and receive data.",
+                duration: "12 weeks",
+                level: "Intermediate"
+              },
+              {
+                title: "Robotics",
+                description: "Robotics involves the design, construction, and perform tasks autonomously or semi-autonomously.",
+                duration: "16 weeks",
+                level: "Advanced"
+              },
+              {
+                title: "UI/UX Development",
+                description: "UI/UX development is a process that involves creating user interfaces and experiences for products.",
+                duration: "14 weeks",
+                level: "Beginner to Intermediate"
+              },
+              {
+                title: "Soft Skills",
+                description: "Soft skills are interpersonal abilities like communication, teamwork, and problem-solving.",
+                duration: "6 weeks",
+                level: "All Levels"
+              }
+            ].slice(0, showAllCourses ? undefined : 6).map((course, index) => (
+              <div
+                key={index}
                 className="rounded-2xl bg-black p-8 border border-gray-800 transition-all duration-300 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 group"
               >
-                <div className="bg-black/40 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 text-gold group-hover:bg-gold group-hover:text-black transition-all duration-300">
-                  {service.icon}
-                </div>
-                
-                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-gold transition-colors duration-300">{service.title}</h3>
-                <p className="text-gray-300 mb-6">{service.description}</p>
+                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-gold transition-colors duration-300">
+                  {course.title}
+                </h3>
+                <p className="text-gray-300 mb-6">{course.description}</p>
                 
                 <div className="space-y-3 mb-6">
-                  {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-start">
-                      <Check size={16} className="text-gold mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{feature}</span>
-                    </div>
-                  ))}
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Duration:</span>
+                    <span className="text-gold">{course.duration}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">Level:</span>
+                    <span className="text-gold">{course.level}</span>
+                  </div>
                 </div>
-                
-                <a href="#" className="flex items-center text-gold group-hover:text-white transition-colors duration-300">
-                  <span className="mr-2">Learn more</span>
-                  <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform duration-300" />
+
+                <a 
+                  href="/contact" 
+                  className="block w-full px-4 py-2 rounded-full bg-gold text-black font-medium transition-all duration-300 hover:bg-gold/90 text-center"
+                >
+                  Explore Now
                 </a>
-                
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               </div>
             ))}
           </div>
+
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => setShowAllCourses(!showAllCourses)}
+              className="px-8 py-3 rounded-full bg-gold text-black font-medium transition-all duration-300 hover:bg-gold/90 flex items-center gap-2"
+            >
+              {showAllCourses ? 'Show Less' : 'View More Courses'}
+              {showAllCourses ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </section>
-      
+
+
       {/* Process Section */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-gold/20 text-gold border border-gold/40 inline-block mb-4">
-              Our Process
+          <span className="px-5 py-3 rounded-full text-base font-medium bg-gold/20 text-gold border border-gold/30 inline-block mb-4">
+            Our Process
             </span>
             <h2 className="text-4xl font-bold text-white mb-6">How We <span className="text-gold-gradient">Deliver Excellence</span></h2>
             <p className="text-gray-300">
@@ -183,49 +296,7 @@ const Services = () => {
       </section>
       
       {/* Additional Services Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">Additional <span className="text-gold-gradient">Services</span></h2>
-            <p className="text-gray-300">
-              Beyond our core offerings, we provide these specialized services to enhance your learning experience.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Corporate Training",
-                description: "Customized training programs for teams and organizations to upskill employees in specific areas."
-              },
-              {
-                title: "One-on-One Mentorship",
-                description: "Personalized guidance from industry experts to accelerate your learning and career growth."
-              },
-              {
-                title: "Career Coaching",
-                description: "Professional coaching to help you navigate career transitions and achieve your professional goals."
-              },
-              {
-                title: "Custom Curriculum Development",
-                description: "Tailored course development for organizations with specific training needs and objectives."
-              }
-            ].map((service, index) => (
-              <div 
-                key={index} 
-                className="rounded-2xl bg-black p-8 border border-gray-800 transition-all duration-300 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 group"
-              >
-                <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-gold transition-colors duration-300">{service.title}</h3>
-                <p className="text-gray-300 mb-6">{service.description}</p>
-                <a href="#" className="px-6 py-2 rounded-full border border-gold text-gold font-medium transition-all duration-300 hover:bg-gold hover:text-black inline-block">
-                  Learn More
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
+     
       {/* CTA Section */}
       <section className="py-20 bg-black relative">
         <div className="absolute inset-0 opacity-10">
@@ -243,8 +314,8 @@ const Services = () => {
             </div>
             
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <a href="#courses" className="btn-primary">
-                Browse Our Courses
+              <a href="/brochure" className="btn-primary">
+                Download Brochure
               </a>
               <a href="/contact" className="px-6 py-3 rounded-full border border-gold text-gold font-medium transition-all duration-300 hover:bg-gold hover:text-black text-center">
                 Contact Us

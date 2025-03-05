@@ -34,10 +34,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-black/90 backdrop-blur-lg shadow-md' : 'py-5 bg-transparent'}`}>
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        <NavLink to="/" className="text-2xl font-bold text-gold flex items-center gap-2">
-          <span className="animate-pulse-gentle">Core</span> 
-          <span className="text-white">Courses</span>
-        </NavLink>
+        
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-1 lg:space-x-4">

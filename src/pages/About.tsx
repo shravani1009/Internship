@@ -1,8 +1,7 @@
-
 import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
+import LOVE from '../assets/LOVE.png';
 const About = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,8 +20,8 @@ const About = () => {
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-gold/20 text-gold border border-gold/40 inline-block mb-4">
-              Who We Are
+            <span className="px-5 py-3 rounded-full text-base font-medium bg-gold/20 text-gold border border-gold/30 inline-block mb-4">
+              Who we are 
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">About <span className="text-gold-gradient">Our Mission</span></h1>
             <p className="text-gray-300 text-lg">
@@ -37,76 +36,110 @@ const About = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-white">Our <span className="text-gold-gradient">Story</span></h2>
+              <h2 className="text-5xl font-bold mb-6 text-white">Our <span className="text-gold-gradient">Story</span></h2>
               <p className="text-gray-300 mb-6">
-                Founded in 2018, Core Courses began with a simple mission: to bridge the gap between traditional education and the rapidly evolving demands of the professional world. We recognized that many graduates were entering the workforce without the practical skills needed to succeed.
+              RV TechLearn is more than just a training and consultancy firm—we are catalysts for growth, innovation, and success. Our mission is simple yet powerful: Learn, Innovate, and Succeed.
               </p>
               <p className="text-gray-300 mb-6">
-                What started as a small collection of web development courses has grown into a comprehensive platform offering education across multiple disciplines, from design to digital marketing to data science.
+              We are dedicated to empowering individuals, institutions, and organizations through industry-aligned training programs designed to meet modern demands. From cutting-edge technologies to time-tested methodologies, we provide the knowledge and skills essential for excelling in today's dynamic business landscape.
               </p>
               <p className="text-gray-300">
-                Today, we're proud to have helped over 100,000 students worldwide transform their careers and achieve their professional goals.
+              Our consultancy services go beyond traditional approaches. With a team of seasoned experts, we work closely with businesses to identify challenges, craft strategic solutions, and implement effective processes that drive sustainable growth and long-term success.
+
+              Whether you're an individual looking to advance your career or a business striving to stay ahead of the competition, RV TechLearn is your trusted partner in success. Together, let’s Learn, Innovate, and Succeed.
               </p>
+              
+              <div className="mt-8">
+                <h3 className="text-3xl font-normal italic">
+                  <span className="text-white">Together, let's</span>{" "}
+                  <span className="text-gold-gradient">Learn, Innovate <span className='text-white'> & </span> Succeed.</span>
+                </h3>
+              </div>
+
+  
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl shadow-gold/10 border border-gold/20">
+            <div className="rounded-xl overflow-hidden shadow-xl shadow-gold/10 border border-gold/20 h-full flex items-center">
               <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                src={LOVE} 
                 alt="Team collaboration" 
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
+                style={{ maxHeight: '500px' }}
               />
             </div>
           </div>
         </div>
       </section>
       
-      {/* Team Section */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4 md:px-6">
+      {/*values section*/}
+      <section className="py-20 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-gold/5"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium bg-gold/20 text-gold border border-gold/40 inline-block mb-4">
-              Our Team
+            <span className="px-5 py-2 rounded-full text-base font-medium bg-gold/20 text-gold border border-gold/30 inline-block mb-3">
+              Our Values
             </span>
-            <h2 className="text-4xl font-bold text-white mb-6">Meet The <span className="text-gold-gradient">Experts</span></h2>
-            <p className="text-gray-300">
-              Our instructors bring decades of real-world experience from top companies around the globe.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Emily Chen",
-                role: "Lead Data Science Instructor",
-                image: "https://randomuser.me/api/portraits/women/23.jpg",
-                description: "Former Lead Data Scientist at Google with a PhD in Computer Science from MIT."
-              },
-              {
-                name: "James Wilson",
-                role: "Web Development Director",
-                image: "https://randomuser.me/api/portraits/men/32.jpg",
-                description: "15+ years of experience building enterprise applications for Fortune 500 companies."
-              },
-              {
-                name: "Sophia Rodriguez",
-                role: "UX/UI Design Lead",
-                image: "https://randomuser.me/api/portraits/women/44.jpg",
-                description: "Award-winning designer with experience at Apple and Airbnb."
-              }
-            ].map((member, index) => (
-              <div key={index} className="rounded-2xl bg-gray-900 p-8 border border-gray-800 transition-all duration-300 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 group">
-                <img 
-                  src={member.image} 
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full object-cover mx-auto mb-6 border-2 border-gold"
-                />
-                <h3 className="text-xl font-semibold text-white text-center mb-2">{member.name}</h3>
-                <p className="text-gold text-center mb-4">{member.role}</p>
-                <p className="text-gray-300 text-center">{member.description}</p>
-                <div className="mt-6 text-center">
-                  <a href="#" className="text-sm text-gold group-hover:text-white transition-colors duration-300">View Full Profile</a>
+            </div>
+
+          <div className="relative max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-6 md:gap-4">
+              {[
+                {
+                  title: "Excellence",
+                  description: "We are committed to delivering nothing short of excellence in everything we do.",
+                  icon: "⭐"
+                },
+                {
+                  title: "Innovation",
+                  description: "Innovation is at the heart of RVTechlearn. We embrace change and creativity.",
+                  icon: "💡"
+                },
+                {
+                  title: "Collaboration",
+                  description: "We believe in the power of collaboration to achieve remarkable results.",
+                  icon: "🤝"
+                },
+                {
+                  title: "Empowerment",
+                  description: "Through learning and development, we empower individuals and organizations.",
+                  icon: "🚀"
+                }
+              ].map((value, index) => (
+                <div 
+                  key={index}
+                  className="group relative"
+                  style={{
+                    transform: `translateY(${index % 2 === 0 ? '2rem' : '0'})`
+                  }}
+                >
+                  <div className="relative z-10 bg-gray-900/90 backdrop-blur-md rounded-2xl p-6 h-full border border-gold/20 transition-all duration-500 
+                    group-hover:border-gold/50 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-gold/10">
+                    <div className="absolute -inset-1 bg-gradient-to-br from-gold/20 to-transparent rounded-2xl opacity-0 
+                      group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                    
+                    <div className="flex flex-col h-full">
+                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-gold/20 to-black/50 
+                        border border-gold/30 flex items-center justify-center text-3xl mb-4 
+                        transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                        {value.icon}
+                      </div>
+                      
+                      <h3 className="text-xl font-bold bg-gradient-to-r from-white to-gold bg-clip-text text-transparent mb-3">
+                        {value.title}
+                      </h3>
+                      
+                      <p className="text-gray-400 text-sm leading-relaxed flex-grow">
+                        {value.description}
+                      </p>
+                      
+                      
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -21,10 +21,7 @@ const ServiceCard = ({ title, description, icon, delay = 0 }: ServiceCardProps) 
       </div>
       <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-gold transition-colors duration-300">{title}</h3>
       <p className="text-gray-300 mb-4">{description}</p>
-      <a href="#" className="flex items-center text-gold group-hover:text-white transition-colors duration-300">
-        <span className="mr-2">Learn more</span>
-        <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform duration-300" />
-      </a>
+      
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
     </div>
   );
