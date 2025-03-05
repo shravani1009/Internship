@@ -1,8 +1,28 @@
-
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  // Quick links with proper routes
+  const quickLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Clients', path: '/clients' },
+    { name: 'Join Our Team', path: '/join-team' },
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'Brochure', path: '/brochure' }
+  ];
+
+  // Popular courses with proper routes
+  const popularCourses = [
+    { name: 'Digital Marketing', path: '/courses/digital-marketing' },
+    { name: 'Web Development', path: '/courses/web-development' },
+    { name: 'Data Science', path: '/courses/data-science' },
+    { name: 'UI/UX Design', path: '/courses/ui-ux-design' },
+    { name: 'Project Management', path: '/courses/project-management' },
+    { name: 'Business Analytics', path: '/courses/business-analytics' }
+  ];
+
   return (
     <footer className="bg-black pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
@@ -34,13 +54,13 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {['Home', 'About Us', 'Services', 'Clients', 'Join Our Team', 'Contact Us', 'Brochure'].map((item, index) => (
+              {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link 
-                    to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                    to={link.path}
                     className="text-gray-400 hover:text-gold transition-colors duration-300"
                   >
-                    {item}
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -50,11 +70,14 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Popular Courses</h3>
             <ul className="space-y-2">
-              {['Digital Marketing', 'Web Development', 'Data Science', 'UI/UX Design', 'Project Management', 'Business Analytics'].map((item, index) => (
+              {popularCourses.map((course, index) => (
                 <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-gold transition-colors duration-300">
-                    {item}
-                  </a>
+                  <Link 
+                    to={course.path}
+                    className="text-gray-400 hover:text-gold transition-colors duration-300"
+                  >
+                    {course.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -85,15 +108,15 @@ const Footer = () => {
               © {new Date().getFullYear()} Core Courses. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-500 hover:text-gold text-sm transition-colors duration-300">
+              <Link to="/privacy-policy" className="text-gray-500 hover:text-gold text-sm transition-colors duration-300">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gold text-sm transition-colors duration-300">
+              </Link>
+              <Link to="/terms-of-service" className="text-gray-500 hover:text-gold text-sm transition-colors duration-300">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gold text-sm transition-colors duration-300">
+              </Link>
+              <Link to="/cookie-policy" className="text-gray-500 hover:text-gold text-sm transition-colors duration-300">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>
