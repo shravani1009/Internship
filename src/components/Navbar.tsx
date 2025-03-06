@@ -40,7 +40,7 @@ const Navbar = () => {
             <img 
               src={companyLogo} 
               alt="RV TechLearn Logo" 
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain"  // Changed from h-10 to h-12
             />
           </div>
           <span className="text-xl font-bold text-white hidden sm:inline">

@@ -15,7 +15,8 @@ import {
   Wifi, 
   Cpu, 
   Layers, 
-  Users 
+  Users,
+  Terminal  // Add this import
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -127,7 +128,7 @@ const CourseOverview = () => {
       title: 'Robotics',
       category: 'development',
       description: 'Robotics involves the design, construction, and perform tasks autonomously or semi-autonomously.',
-      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      image: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a',
       icon: Cpu
     },
     {
@@ -145,6 +146,14 @@ const CourseOverview = () => {
       description: 'Soft skills are interpersonal abilities like communication, teamwork, and problem-solving.',
       image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
       icon: Users
+    },
+    {
+      id: 16,
+      title: 'Core Programming',
+      category: 'development',
+      description: 'Core programming involves learning the fundamentals of programming languages and algorithms.',
+      image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713',
+      icon: Terminal
     }
   ];
 
@@ -195,7 +204,7 @@ const CourseOverview = () => {
                 hover:border-[#b0934c]/50 overflow-hidden`}
               >
                 {/* Background image with overlay */}
-                <div className="absolute inset-0 opacity-10 transition-opacity duration-500 group-hover:opacity-15">
+                <div className="absolute inset-0 opacity-15 transition-opacity duration-500 group-hover:opacity-20">
                   <img 
                     src={course.image} 
                     alt={course.title} 
