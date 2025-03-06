@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { BookOpen, Users, Award, PenTool, BarChart, Headphones, ChevronRight, Briefcase, UserCheck, Sliders, Clock } from 'lucide-react';
 
+
 const Index = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -128,6 +129,7 @@ const Index = () => {
       </section>
       
       <Footer />
+      
     </div>
   );
 };

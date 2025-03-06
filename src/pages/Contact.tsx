@@ -71,19 +71,19 @@ const Contact = () => {
       <style>{subtleAnimation}</style>
       <Navbar />
       
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black opacity-90"></div>
         <div className="absolute inset-0 bg-[url('/contact-bg.jpg')] bg-cover bg-center bg-fixed"></div>
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-4 pt-24"> {/* Changed from pt-16 to pt-24 */}
           <div className="flex flex-col items-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-white">
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
               Let's <span className="text-gold-gradient">Connect</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mt-6">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-4">
               Have questions about our courses or want to start your learning journey? We're here to help you succeed.
             </p>
-            <div className="mt-8 px-6 py-4 bg-gold/10 border border-gold/20 rounded-lg">
-              <p className="text-gold">
+            <div className="mt-6 px-5 py-3 bg-gold/10 border border-gold/20 rounded-lg">
+              <p className="text-gold text-sm">
                 For course details, pricing information, or to begin enrollment, our team is ready to assist you!
               </p>
             </div>
@@ -92,8 +92,8 @@ const Contact = () => {
       </section>
 
       {/* Quick Contact Cards */}
-      <section className="py-16 px-4 relative -mt-20">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="py-12 px-4 relative -mt-16"> {/* Reduced py-16 to py-12 */}
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6"> {/* Reduced gap-8 to gap-6 */}
           {[
             { 
               icon: MapPin, 
@@ -115,13 +115,13 @@ const Contact = () => {
               link: 'mailto:contact@rvtechlearn.com',
             },
           ].map((item, index) => (
-            <div key={index} className="bg-gray-900/50 backdrop-blur-lg rounded-xl p-8 border border-gray-800 hover:border-gold/30 transition-all duration-300">
-              <item.icon className="w-12 h-12 text-gold mb-6" />
-              <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
+            <div key={index} className="bg-gray-900/50 backdrop-blur-lg rounded-xl p-6 border border-gray-800 hover:border-gold/30 transition-all duration-300"> {/* Reduced p-8 to p-6 */}
+              <item.icon className="w-10 h-10 text-gold mb-4" /> {/* Reduced icon size */}
+              <h3 className="text-xl font-semibold mb-3">{item.title}</h3> {/* Reduced text size */}
               <a 
                 href={item.link} 
                 {...item.linkProps}
-                className="text-gray-400 hover:text-gold transition-colors text-lg"
+                className="text-gray-400 hover:text-gold transition-colors text-base"
               >
                 {item.content}
               </a>
@@ -131,9 +131,9 @@ const Contact = () => {
       </section>
 
       {/* Contact Form and Map Section */}
-      <section className="py-20 px-4">
+      <section className="py-16 px-4"> {/* Reduced py-20 to py-16 */}
         <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12">
+          <div className="flex flex-col lg:flex-row gap-8"> {/* Reduced gap-12 to gap-8 */}
             {/* Form Section */}
             <div className="lg:w-1/2">
               <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-800">
@@ -205,9 +205,9 @@ const Contact = () => {
 
             {/* Map Section */}
             <div className="lg:w-1/2">
-              <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-800 h-full">
-                <h2 className="text-3xl font-bold mb-8">Our <span className="text-gold-gradient">Location</span></h2>
-                <div className="rounded-lg overflow-hidden h-[400px]">
+              <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-800 h-full"> {/* Reduced p-8 to p-6 */}
+                <h2 className="text-2xl font-bold mb-6">Our <span className="text-gold-gradient">Location</span></h2>
+                <div className="rounded-lg overflow-hidden h-[350px]"> {/* Reduced height from 400px to 350px */}
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30169.083604862267!2d72.99856!3d19.076543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c136b519107b%3A0x8452b99754be0fc8!2sVashi%2C%20Navi%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1709906358045!5m2!1sen!2sin"
                     width="100%"
