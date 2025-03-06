@@ -1,7 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import companyLogo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,13 +28,25 @@ const Navbar = () => {
     { name: 'Clients', path: '/clients' },
     { name: 'Join Our Team', path: '/join-team' },
     { name: 'Contact Us', path: '/contact' },
-    { name: 'Brochure', path: '/brochure' },
+    { name: 'Brochure', path: '/brochure' }
   ];
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-black/90 backdrop-blur-lg shadow-md' : 'py-5 bg-transparent'}`}>
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        
+        {/* Logo */}
+        <NavLink to="/" className="flex items-center space-x-2">
+          <div className="bg-white p-1.5 rounded-lg">
+            <img 
+              src={companyLogo} 
+              alt="RV TechLearn Logo" 
+              className="h-10 w-auto object-contain"
+            />
+          </div>
+          <span className="text-xl font-bold text-white hidden sm:inline">
+          
+          </span>
+        </NavLink>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
@@ -49,9 +61,6 @@ const Navbar = () => {
               {item.name}
             </NavLink>
           ))}
-          <NavLink to="/start-project" className="ml-4 px-6 py-2 rounded-full bg-gold text-black font-medium transition-all duration-300 hover:bg-white hover:text-gold">
-            Start A Project
-          </NavLink>
         </div>
 
         {/* Mobile menu button */}
@@ -77,9 +86,6 @@ const Navbar = () => {
               {item.name}
             </NavLink>
           ))}
-          <NavLink to="/start-project" className="px-6 py-3 rounded-full bg-gold text-black font-medium text-center transition-all duration-300 hover:bg-white hover:text-gold">
-            Start A Project
-          </NavLink>
         </div>
       </div>
     </nav>

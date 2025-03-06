@@ -17,8 +17,10 @@ import {
   Layers, 
   Users 
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const CourseOverview = () => {
+  const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [visibleTab, setVisibleTab] = useState<string>('all');
   const [isExpanded, setIsExpanded] = useState(false);
@@ -154,9 +156,8 @@ const CourseOverview = () => {
     ? filteredCourses 
     : filteredCourses.slice(0, 8);
 
-  const handleExplore = (courseId: number) => {
-    // Handle navigation to course detail page
-    console.log('Exploring course:', courseId);
+  const handleExplore = () => {
+    navigate('/contact');
   };
 
   const handleViewAll = () => {
@@ -214,13 +215,7 @@ const CourseOverview = () => {
                   </p>
                   
                   <div className={`mt-6 overflow-hidden transition-all duration-500 ${hoveredCard === index ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <button 
-                      onClick={() => handleExplore(course.id)}
-                      className="px-4 py-2 bg-[#b0934c] text-black font-medium rounded-lg hover:bg-[#b0934c]/90 transition-all duration-300 w-full flex items-center justify-center gap-2"
-                    >
-                      Explore Course
-                      <ArrowRight size={16} />
-                    </button>
+                    
                   </div>
                 </div>
               </div>

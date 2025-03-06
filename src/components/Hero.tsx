@@ -60,7 +60,7 @@ const Hero = () => {
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </a>
-              <a href="#about" className="px-6 py-3 rounded-full border border-gold text-gold font-medium transition-all duration-300 hover:bg-gold/10 group">
+              <a href="/about" className="px-6 py-3 rounded-full border border-gold text-gold font-medium transition-all duration-300 hover:bg-gold/10 group">
                 <span className="relative">
                   Learn More
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>

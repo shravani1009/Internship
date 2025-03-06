@@ -116,8 +116,11 @@ const Index = () => {
               <a href="#courses" className="btn-primary">
                 Browse Courses
               </a>
-              <a href="/contact" className="px-6 py-3 rounded-full border border-gold text-gold font-medium transition-all duration-300 hover:bg-gold hover:text-black text-center">
-                Contact Us
+              <a href="/contact" className="relative px-6 py-3 text-gold font-medium transition-all duration-300 border border-gold rounded-full">
+                <span className="relative group">
+                  Contact Us
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+                </span>
               </a>
             </div>
           </div>
