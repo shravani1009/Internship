@@ -49,7 +49,7 @@ const Hero = () => {
               Transform Your Career
             </span>
             <h1 className="hero-title text-white">
-              Let's Learn, Innovate <span className="text-gold-gradient">& Succeed</span>
+              Let's Learn , Innovate <span className="text-gold-gradient">& Succeed</span>
             </h1>
             <p className="text-gray-300 text-lg">
               Study like the best IIT graduates and secure lucrative positions with an expertly engineered path to elevate you into an expert.
