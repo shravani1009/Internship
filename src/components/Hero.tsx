@@ -1,110 +1,72 @@
-import { useState, useEffect } from 'react';
-import { ChevronRight, ChevronDown } from 'lucide-react';
-import bgimage from '../assets/bgimage.jpg';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const backgroundImages = [
-    bgimage,
-    bgimage
-  ];
 
   useEffect(() => {
     setIsVisible(true);
-    
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000);
-    
-    return () => clearInterval(interval);
   }, []);
 
-  return (
-    <div className="relative min-h-screen flex items-center overflow-hidden bg-black">
-      {backgroundImages.map((imgSrc, index) => (
-        <div 
-          key={index}
-          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${
-            currentImageIndex === index ? 'opacity-20' : 'opacity-0'
-          }`}
-        >
-          <img 
-            src={imgSrc} 
-            alt={`Background ${index + 1}`} 
-            className="w-full h-full object-cover"
-          />
-        </div>
-      ))}
-      
-      <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/80 to-black/90 z-1"></div>
-      
-      <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className={`space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <span className="px-5 py-2 rounded-full text-sm font-medium bg-gold/20 text-gold border border-gold/40">
-              Transform Your Career
-            </span>
-            <h1 className="hero-title text-white">
-              Let's Learn , Innovate <span className="text-gold-gradient">& Succeed</span>
-            </h1>
-            <p className="text-gray-300 text-lg">
-              Study like the best IIT graduates and secure lucrative positions with an expertly engineered path to elevate you into an expert.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#courses" className="btn-primary flex items-center justify-center gap-2 group relative overflow-hidden">
-                Explore Courses 
-                <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-              </a>
-              <a href="/about" className="px-6 py-3 rounded-full border border-gold text-gold font-medium transition-all duration-300 hover:bg-gold/10 group">
-                <span className="relative">
-                  Learn More
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
-                </span>
-              </a>
-            </div>
+  const CustomButton = ({ to, variant, children }: { to: string; variant: 'primary' | 'secondary'; children: React.ReactNode }) => (
+    <Link
+      to={to}
+      className={`px-6 py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center gap-2 ${
+        variant === 'primary'
+          ? 'bg-green-600 text-white hover:bg-green-700'
+          : 'bg-white text-green-600 hover:bg-gray-50'
+      }`}
+    >
+      {children}
+    </Link>
+  );
 
-            {/* Stats Section */}
-            <div className="flex flex-wrap gap-8 ml-4 mt-4">
-              <div className="flex flex-col items-center group">
-                <span className="text-4xl font-bold text-[#b0934c] group-hover:scale-110 transition-transform duration-300">25k+</span>
-                <span className="text-gray-400">Students Trained</span>
-              </div>
-              <div className="flex flex-col items-center group">
-                <span className="text-4xl font-bold text-[#b0934c] group-hover:scale-110 transition-transform duration-300">7.5k+</span>
-                <span className="text-gray-400">Faculties Trained</span>
-              </div>
-              <div className="flex flex-col items-center group">
-                <span className="text-4xl font-bold text-[#b0934c] group-hover:scale-110 transition-transform duration-300">5k+</span>
-                <span className="text-gray-400">Corporates Trained</span>
-              </div>
-              <div className="flex flex-col items-center group">
-                <span className="text-4xl font-bold text-[#b0934c] group-hover:scale-110 transition-transform duration-300">15+</span>
-                <span className="text-gray-400">Courses</span>
-              </div>
+  return (
+    <section className="pt-24 pb-12 md:pt-32 md:pb-20 relative px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <div className={`flex-1 text-center md:text-left transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <div className={`inline-block bg-green-100 text-green-600 font-medium text-xs md:text-sm py-1 px-3 rounded-full mb-4 md:mb-6 transition-all duration-700 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              Transform Your Skills
+            </div>
+            <h1 className={`text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 md:mb-6 text-black transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              Let's{" "}
+              <span className="bg-gradient-to-r from-green-600 to-green-400 text-transparent bg-clip-text">
+                Learn
+              </span>,{" "}
+              <br />
+              <span className="bg-gradient-to-r from-green-600 to-green-400 text-transparent bg-clip-text">
+                Innovate
+              </span>
+              <span className="text-black"> & </span>
+              <span className="bg-gradient-to-r from-green-600 to-green-400 text-transparent bg-clip-text">
+                Succeed
+              </span>
+            </h1>
+            <p className={`text-base md:text-lg text-gray-800 mb-6 md:mb-8 max-w-xl mx-auto md:mx-0 transition-all duration-700 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              Join thousands of learners worldwide and transform your career with our expert-led courses designed for the modern professional.
+            </p>
+            <div className={`flex flex-col sm:flex-row justify-center md:justify-start gap-4 transition-all duration-700 delay-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              <CustomButton to="/services" variant="primary">
+                Explore Courses
+              </CustomButton>
+              <CustomButton to="/about" variant="secondary">
+                Learn More
+              </CustomButton>
             </div>
           </div>
-
-          <div className={`relative transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
-            <div className="relative z-10 rounded-3xl overflow-hidden border border-gold/20 shadow-[0_8px_32px_rgba(176,147,76,0.3)] transform transition-all duration-700 hover:shadow-[0_12px_40px_rgba(176,147,76,0.4)]">
+          <div className={`flex-1 mt-8 md:mt-0 transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
+            <div className="rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src={bgimage}
-                alt="Professional learning environment" 
-                className="w-full h-auto object-cover transform transition-all duration-700 hover:scale-105"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+                alt="Students learning"
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
         </div>
       </div>
-
-      
-    </div>
+    </section>
   );
 };
 

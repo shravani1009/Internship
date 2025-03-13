@@ -67,33 +67,19 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <style>{subtleAnimation}</style>
-      <Navbar />
-      
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black opacity-90"></div>
-        <div className="absolute inset-0 bg-[url('/contact-bg.jpg')] bg-cover bg-center bg-fixed"></div>
-        <div className="relative z-10 text-center px-4 pt-24"> {/* Changed from pt-16 to pt-24 */}
-          <div className="flex flex-col items-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white">
-              Let's <span className="text-gold-gradient">Connect</span>
-            </h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-4">
-              Have questions about our courses or want to start your learning journey? We're here to help you succeed.
-            </p>
-            <div className="mt-6 px-5 py-3 bg-gold/10 border border-gold/20 rounded-lg">
-              <p className="text-gold text-sm">
-                For course details, pricing information, or to begin enrollment, our team is ready to assist you!
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 py-28">
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-extrabold sm:text-5xl">
+          <span className="text-gray-900">Let's</span>
+          <span className="text-green-600 ml-3">Connect</span>
+        </h1>
+        <p className="mt-4 text-xl text-gray-600">  For course details, pricing information, or to begin enrollment, our team is ready to assist you!</p>
+      </div>
 
       {/* Quick Contact Cards */}
-      <section className="py-12 px-4 relative -mt-16"> {/* Reduced py-16 to py-12 */}
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6"> {/* Reduced gap-8 to gap-6 */}
+      <section className="py-12 px-4 relative -mt-16">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { 
               icon: MapPin, 
@@ -115,13 +101,13 @@ const Contact = () => {
               link: 'mailto:contact@rvtechlearn.com',
             },
           ].map((item, index) => (
-            <div key={index} className="bg-gray-900/50 backdrop-blur-lg rounded-xl p-6 border border-gray-800 hover:border-gold/30 transition-all duration-300"> {/* Reduced p-8 to p-6 */}
-              <item.icon className="w-10 h-10 text-gold mb-4" /> {/* Reduced icon size */}
-              <h3 className="text-xl font-semibold mb-3">{item.title}</h3> {/* Reduced text size */}
+            <div key={index} className="bg-white rounded-xl p-6 border border-gray-200 shadow-md hover:border-green-300 transition-all duration-300">
+              <item.icon className="w-10 h-10 text-green-600 mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{item.title}</h3>
               <a 
                 href={item.link} 
                 {...item.linkProps}
-                className="text-gray-400 hover:text-gold transition-colors text-base"
+                className="text-gray-600 hover:text-green-600 transition-colors text-base"
               >
                 {item.content}
               </a>
@@ -131,20 +117,20 @@ const Contact = () => {
       </section>
 
       {/* Contact Form and Map Section */}
-      <section className="py-16 px-4"> {/* Reduced py-20 to py-16 */}
+      <section className="py-16 px-4">
         <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8"> {/* Reduced gap-12 to gap-8 */}
+          <div className="flex flex-col lg:flex-row gap-8">
             {/* Form Section */}
             <div className="lg:w-1/2">
-              <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-800">
-                <h2 className="text-3xl font-bold mb-8">Send us a <span className="text-gold-gradient">Message</span></h2>
+              <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-md">
+                <h2 className="text-3xl font-bold mb-8">Send us a <span className="text-green-600">Message</span></h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-2 gap-6">
                     <div className="col-span-1">
                       <input
                         type="text"
                         placeholder="First Name"
-                        className="w-full bg-black/50 border border-gray-800 rounded-lg px-4 py-3 focus:border-gold/50 transition-colors"
+                        className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:border-green-500 focus:ring-2 focus:ring-green-500 outline-none transition-colors"
                         value={formData.firstName}
                         onChange={handleChange}
                         id="firstName"
@@ -155,7 +141,7 @@ const Contact = () => {
                       <input
                         type="text"
                         placeholder="Last Name"
-                        className="w-full bg-black/50 border border-gray-800 rounded-lg px-4 py-3 focus:border-gold/50 transition-colors"
+                        className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:border-green-500 focus:ring-2 focus:ring-green-500 outline-none transition-colors"
                         value={formData.lastName}
                         onChange={handleChange}
                         id="lastName"
@@ -167,7 +153,7 @@ const Contact = () => {
                     <input
                       type="email"
                       placeholder="Email"
-                      className="w-full bg-black/50 border border-gray-800 rounded-lg px-4 py-3 focus:border-gold/50 transition-colors"
+                      className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:border-green-500 focus:ring-2 focus:ring-green-500 outline-none transition-colors"
                       value={formData.email}
                       onChange={handleChange}
                       id="email"
@@ -178,7 +164,7 @@ const Contact = () => {
                     <input
                       type="text"
                       placeholder="Subject"
-                      className="w-full bg-black/50 border border-gray-800 rounded-lg px-4 py-3 focus:border-gold/50 transition-colors"
+                      className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:border-green-500 focus:ring-2 focus:ring-green-500 outline-none transition-colors"
                       value={formData.subject}
                       onChange={handleChange}
                       id="subject"
@@ -188,7 +174,7 @@ const Contact = () => {
                   <div>
                     <textarea
                       placeholder="Message"
-                      className="w-full bg-black/50 border border-gray-800 rounded-lg px-4 py-3 focus:border-gold/50 transition-colors"
+                      className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:border-green-500 focus:ring-2 focus:ring-green-500 outline-none transition-colors"
                       value={formData.message}
                       onChange={handleChange}
                       id="message"
@@ -196,7 +182,7 @@ const Contact = () => {
                       required
                     ></textarea>
                   </div>
-                  <button type="submit" className="w-full bg-gradient-to-r from-gold to-amber-500 text-black font-semibold py-4 rounded-lg hover:opacity-90 transition-opacity">
+                  <button type="submit" className="w-full bg-green-600 text-white font-semibold py-4 rounded-lg hover:bg-green-700 transition-colors">
                     Send Message
                   </button>
                 </form>
@@ -205,9 +191,9 @@ const Contact = () => {
 
             {/* Map Section */}
             <div className="lg:w-1/2">
-              <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-800 h-full"> {/* Reduced p-8 to p-6 */}
-                <h2 className="text-2xl font-bold mb-6">Our <span className="text-gold-gradient">Location</span></h2>
-                <div className="rounded-lg overflow-hidden h-[350px]"> {/* Reduced height from 400px to 350px */}
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-md h-full">
+                <h2 className="text-2xl font-bold mb-6">Our <span className="text-green-600">Location</span></h2>
+                <div className="rounded-lg overflow-hidden h-[350px]">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30169.083604862267!2d72.99856!3d19.076543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c136b519107b%3A0x8452b99754be0fc8!2sVashi%2C%20Navi%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1709906358045!5m2!1sen!2sin"
                     width="100%"
@@ -218,13 +204,13 @@ const Contact = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
-                <div className="mt-6 p-4 bg-black/30 rounded-lg">
-                  <h3 className="font-semibold mb-2">Our Office</h3>
+                <div className="mt-6 p-4 bg-green-50 rounded-lg">
+                  <h3 className="font-semibold mb-2 text-gray-900">Our Office</h3>
                   <a 
                     href="https://maps.app.goo.gl/1CQwRqm7etWm9esR8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-gold transition-colors"
+                    className="text-gray-600 hover:text-green-600 transition-colors"
                   >
                     Vashi Sec 26<br />
                     Navi Mumbai, Maharashtra
@@ -236,7 +222,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <Footer />
+   
     </div>
   );
 };

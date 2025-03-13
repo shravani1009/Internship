@@ -1,95 +1,91 @@
-import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import companyLogo from '../assets/logo.png';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import { Menu, X, Home, Users, Briefcase, Building2, UserPlus, Mail, FileText } from 'lucide-react';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
+interface NavBarProps {
+  setCurrentSection: (section: string) => void;
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+interface NavItem {
+  name: string;
+  path: string;
+  icon: JSX.Element;
+}
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const NavBar: React.FC<NavBarProps> = ({ setCurrentSection }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location]);
-
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Clients', path: '/clients' },
-    { name: 'Join Our Team', path: '/join-team' },
-    { name: 'Contact Us', path: '/contact' },
-    { name: 'Brochure', path: '/brochure' }
+  const navItems: NavItem[] = [
+    { name: 'Home', path: '/', icon: <Home size={18} /> },
+    { name: 'About Us', path: '/about', icon: <Users size={18} /> },
+    { name: 'Services', path: '/services', icon: <Briefcase size={18} /> },
+    { name: 'Clients', path: '/clients', icon: <Building2 size={18} /> },
+    { name: 'Join Our Team', path: '/join-team', icon: <UserPlus size={18} /> },
+    { name: 'Contact Us', path: '/contact', icon: <Mail size={18} /> },
+    { name: 'Brochure', path: '/brochure', icon: <FileText size={18} /> },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-black/90 backdrop-blur-lg shadow-md' : 'py-5 bg-transparent'}`}>
-      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        {/* Logo */}
-        <NavLink to="/" className="flex items-center space-x-2">
-          <div className="bg-white p-1.5 rounded-lg">
-            <img 
-              src={companyLogo} 
-              alt="RV TechLearn Logo" 
-              className="h-12 w-auto object-contain"  // Changed from h-10 to h-12
-            />
+    <nav className="fixed w-full bg-white shadow-md z-50" role="navigation" aria-label="Main navigation">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex-shrink-0 flex items-center">
+            <span className="text-2xl font-bold text-green-600">EduPro</span>
           </div>
-          <span className="text-xl font-bold text-white hidden sm:inline">
-          
-          </span>
-        </NavLink>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
-          {navItems.map((item, index) => (
-            <NavLink 
-              key={index} 
-              to={item.path} 
-              className={({ isActive }) => 
-                `nav-link text-sm lg:text-base ${isActive ? 'text-gold active' : 'text-white'}`
-              }
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2"
+                onClick={() => setCurrentSection(item.name.toLowerCase())}
+              >
+                {item.icon}
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Navigation Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 hover:text-green-600"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              aria-label="Toggle menu"
             >
-              {item.name}
-            </NavLink>
-          ))}
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile menu button */}
-        <button 
-          className="md:hidden text-white focus:outline-none"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`md:hidden absolute w-full bg-black/95 backdrop-blur-lg transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-screen py-4' : 'max-h-0 overflow-hidden'}`}>
-        <div className="container mx-auto px-4 flex flex-col space-y-4">
-          {navItems.map((item, index) => (
-            <NavLink 
-              key={index} 
-              to={item.path} 
-              className={({ isActive }) => 
-                `nav-link block py-2 ${isActive ? 'text-gold active' : 'text-white'}`
-              }
-            >
-              {item.name}
-            </NavLink>
-          ))}
-        </div>
+        {/* Mobile Navigation Menu */}
+        {isOpen && (
+          <div className="md:hidden" id="mobile-menu" role="menu">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="text-gray-700 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium flex items-center gap-2"
+                  onClick={() => {
+                    setCurrentSection(item.name.toLowerCase());
+                    setIsOpen(false);
+                  }}
+                >
+                  {item.icon}
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavBar;
