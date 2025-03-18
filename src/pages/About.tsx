@@ -1,4 +1,5 @@
-import { Users, Award, BookOpen, GraduationCap } from 'lucide-react';
+import { Users, Award, BookOpen, GraduationCap, Star, Lightbulb, Heart, Rocket } from 'lucide-react';
+import love from '../assets/LOVE.png';
 
 const AboutPage = () => {
   const stats = [
@@ -8,69 +9,101 @@ const AboutPage = () => {
     { icon: <GraduationCap className="h-6 w-6" />, value: '100+', label: 'Expert Instructors' },
   ];
 
+  const values = [
+    {
+      icon: <Star className="h-8 w-8" />,
+      title: "Excellence",
+      description: "Committed to delivering outstanding quality in every aspect of our educational services.",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: <Lightbulb className="h-8 w-8" />,
+      title: "Innovation",
+      description: "Continuously evolving and adapting to embrace new technologies and methodologies.",
+      color: "from-yellow-400 to-orange-500"
+    },
+    {
+      icon: <Heart className="h-8 w-8" />,
+      title: "Collaboration",
+      description: "Building strong partnerships and fostering a supportive learning community.",
+      color: "from-green-400 to-cyan-500"
+    },
+    {
+      icon: <Rocket className="h-8 w-8" />,
+      title: "Empowerment",
+      description: "Enabling individuals to reach their full potential and achieve their goals.",
+      color: "from-blue-500 to-indigo-500"
+    }
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
-      <div className="text-center mb-16">
-        <h1 className="text-4xl font-extrabold sm:text-5xl">
+      <div className="text-center mb-20">
+        <h1 className="text-4xl font-extrabold sm:text-5xl mb-4">
           <span className="text-gray-900">About</span>
-          <span className="text-green-600 ml-3">Pro</span>
+          <span className="text-green-600 ml-3">RV Techlearn</span>
         </h1>
-        <p className="mt-4 text-xl text-gray-600">Transforming Education, Empowering Futures</p>
+        <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+          Transforming Education, Empowering Futures through Innovation and Excellence
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-          <p className="text-lg text-gray-600 mb-6">
-            Founded in 2020, EduPro has grown from a small startup to a leading online education platform. 
-            Our mission is to make quality education accessible to everyone, everywhere.
-          </p>
-          <p className="text-lg text-gray-600">
-            We believe in the power of education to transform lives and create opportunities. 
-            Through our innovative learning platform and expert instructors, we've helped thousands 
-            of students achieve their career goals.
-          </p>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+        <div className="space-y-8">
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              RV TechLearn is more than just a training and consultancy firm—we are catalysts for growth, innovation, and success. Our mission is simple yet powerful: Learn, Innovate, and Succeed.
+            </p>
+          </div>
+          
+          <div>
+            
+            <p className="text-lg text-gray-600 leading-relaxed">
+              We are dedicated to empowering individuals, institutions, and organizations through industry-aligned training programs designed to meet modern demands. From cutting-edge technologies to time-tested methodologies, we provide the knowledge and skills essential for excelling in today's dynamic business landscape.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Our consultancy services go beyond traditional approaches. With a team of seasoned experts, we work closely with businesses to identify challenges, craft strategic solutions, and implement effective processes that drive sustainable growth and long-term success.
+            </p>
+          </div>
+          
+          <div className="mt-8">
+            <p className="text-2xl font-semibold text-green-600 italic py-4">
+              Together, let's Learn, Innovate & Succeed.
+            </p>
+          </div>
         </div>
-        <div>
+        <div className="relative">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            src={love}
             alt="Team collaboration"
-            className="rounded-lg shadow-xl"
+            className="rounded-2xl shadow-2xl w-full object-cover"
           />
+          <div className="absolute inset-0 bg-green-600 opacity-10 rounded-2xl"></div>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-        {stats.map((stat, index) => (
-          <div key={index} className="text-center p-6 bg-white rounded-lg shadow-lg">
-            <div className="flex justify-center text-green-600 mb-4">{stat.icon}</div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-            <div className="text-gray-600">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-
-      <div className="bg-green-50 rounded-2xl p-8 lg:p-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Values</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Excellence</h3>
-            <p className="text-gray-600">
-              We strive for excellence in everything we do, from course content to student support.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Innovation</h3>
-            <p className="text-gray-600">
-              We embrace new technologies and teaching methods to provide the best learning experience.
-            </p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Community</h3>
-            <p className="text-gray-600">
-              We foster a supportive community where students can learn, grow, and succeed together.
-            </p>
-          </div>
+      
+    
+      <div className="mb-24">
+        <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">Our Core Values</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map((value, index) => (
+            <div
+              key={index}
+              className="relative group bg-white rounded-xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-5 rounded-xl transition-opacity duration-300`}></div>
+              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${value.color} text-white mb-4`}>
+                {value.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
+              <p className="text-gray-600">{value.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

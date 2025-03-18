@@ -1,35 +1,40 @@
-import Hero from '../components/Hero';
-import Services from '../components/Services';
-import WhyUs from '../components/WhyUs';
-import Courses from '../components/Courses';
-import StartLearning from '../components/StartLearning.tsx';
-import Stats from '../components/Stats';
-import NavBar from '@/components/Navbar.tsx';
+import { useEffect } from 'react';
+import Navbar from '../components/Navbar';
+import HeroSection from '../components/HeroSection';
+import StatsSection from '../components/StatsSection';
+import AboutSection from '../components/AboutSection';
+import WhyChooseUsSection from '../components/WhyChooseUsSection';
+import ServicesSection from '../components/ServicesSection';
+import Footer from '../components/Footer';
 
 const Index = () => {
+  useEffect(() => {
+    // Scroll to top on component mount
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div>
+    <div className="min-h-screen">
       <section>
-        <NavBar/>
+        <Navbar setCurrentSection={(section: string) => { /* implement the function here */ }} />
       </section>
-      <section className="bg-gray-50">
-        <Hero />
+      <section className="bg-techlearn-background">
+        <HeroSection />
       </section>
-      <section className="py-16 bg-gray-50">
-        <Stats />
+      <section className="py-12 bg-techlearn-lightblue">
+        <StatsSection />
       </section>
-      <section className="py-16 bg-[#1a1a1a]">
-        <Services />
+      <section className="py-3 bg-techlearn-background">
+        <AboutSection />
       </section>
-      <section className="py-16 bg-[#1a1a1a]">
-        <Courses />
+      <section className="py-7 bg-techlearn-lightblue">
+        <WhyChooseUsSection />
       </section>
-      <section className="py-16 bg-gray-50">
-        <WhyUs />
+      <section className="bg-techlearn-background">
+        <ServicesSection />
       </section>
-      <section className="-mb-16 bg-gray-50">
-        <StartLearning />
-      </section>
+      
+      
     </div>
   );
 };

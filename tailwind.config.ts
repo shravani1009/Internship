@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -19,15 +20,17 @@ export default {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
-				gold: '#b0934c',
-				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+				colors: {
+					/* standard shadcn colors */
+					techlearn: {
+					  blue: "#3B82F6",
+					  darkblue: "#1E40AF",
+					  lightblue: "#E0F2FE",  /* This is used for section backgrounds */
+					  background: "#F1F5F9",
+					},
+				  }
+				  
+			
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -122,6 +125,6 @@ export default {
 				'2xl': '1536px',
 			},
 		},
-	},
+	plugins: [tailwindcssAnimate],
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
