@@ -1,24 +1,36 @@
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
+  const scrollToServices = () => {
+    const element = document.querySelector('.services-section');
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="pt-24 pb-16 bg-techlearn-lightblue">
+    <section className="pt-40 pb-24 bg-techlearn-lightblue">
       <div className="container mx-auto px-6 text-center">
-        <h1 className="text-4xl font-bold mb-2 animate-fade-in">Learn. Grow. Succeed.</h1>
-        <p className="text-lg mb-8 animate-fade-in">Explore top-notch tech courses and boost your skills.</p>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 animate-fade-in">Learn. Grow. Succeed.</h1>
+        <p className="text-base md:text-lg text-gray-600 mb-8 animate-fade-in">Explore top-notch tech courses and boost your skills.</p>
         
         <div className="flex justify-center space-x-4 mb-12">
-          <Link 
-            to="/join" 
-            className="bg-techlearn-blue text-white px-6 py-2 rounded transition-all duration-300 hover:bg-techlearn-darkblue"
+          <button 
+            onClick={scrollToServices}
+            className="relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            Join Our Team
-          </Link>
+            <span className="absolute left-0 w-0 h-full transition-all duration-500 ease-out bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full"></span>
+            <span className="relative flex items-center gap-2">
+              Explore Courses
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </button>
           <Link 
             to="/contact" 
-            className="bg-indigo-600 text-white px-6 py-2 rounded transition-all duration-300 hover:bg-indigo-700"
+            className="relative overflow-hidden px-6 py-3 text-white bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            Contact Us
+            <span className="absolute left-0 w-0 h-full transition-all duration-500 ease-out bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full"></span>
+            <span className="relative">Contact Us</span>
           </Link>
         </div>
         

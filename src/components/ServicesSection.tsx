@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from 'react';
+import { useState, useCallback, memo, useEffect, useRef } from 'react';
 import { 
   Activity,
   Database,
@@ -38,13 +38,13 @@ const services = [
     title: "Artificial Intelligence",
     description: "Artificial Intelligence encompasses the development of systems that can perform tasks requiring human intelligence.",
     image: "https://images.unsplash.com/photo-1555255707-c07966088b7b",
-    icon: Monitor  // Changed from Bot to Monitor
+    icon: Monitor
   },
   {
     id: 4,
     title: "Machine Learning",
     description: "Machine Learning is a subset of AI where systems learn from data to make predictions or decisions.",
-    image: "https://images.unsplash.com/photo-1527474305487-b87b222841cc",
+    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
     icon: Code
   },
   {
@@ -141,52 +141,119 @@ interface Service {
   icon: React.ElementType;
 }
 
-const ServiceCard = memo(({ service }: { service: Service }) => (
-  <div 
-    className="service-card bg-white rounded-lg overflow-hidden shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-  >
-    <div className="relative h-48 overflow-hidden group">
-      <img 
-        src={service.image} 
-        alt={service.title} 
-        loading="lazy"
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-        {service.icon && <service.icon className="w-12 h-12 text-white" />}
+const ServiceCard = memo(({ service, index }: { service: Service; index: number }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Add delay based on index for staggered animation
+          setTimeout(() => {
+            setIsVisible(true);
+          }, index * 100);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [index]);
+
+  return (
+    <div 
+      ref={cardRef}
+      className={`service-card bg-white rounded-lg overflow-hidden shadow-md transform 
+        transition-all duration-700 ease-out
+        ${isVisible 
+          ? 'opacity-100 rotate-0 scale-100' 
+          : 'opacity-0 -rotate-3 scale-95'
+        }`}
+    >
+      <div className="relative h-48 overflow-hidden group">
+        {!imageLoaded && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
+        )}
+        <img 
+          src={service.image + '?w=400&q=75'} 
+          alt={service.title} 
+          loading="lazy"
+          onLoad={() => setImageLoaded(true)}
+          className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          {service.icon && <service.icon className="w-12 h-12 text-white" />}
+        </div>
+      </div>
+      <div className="p-6 hover:bg-gray-50 transition-colors duration-300">
+        <h3 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h3>
+        <p className="text-base text-gray-600">{service.description}</p>
       </div>
     </div>
-    <div className="p-6 hover:bg-gray-50 transition-colors duration-300">
-      <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-      <p className="text-sm text-gray-700">{service.description}</p>
-    </div>
-  </div>
-));
+  );
+});
 
 const ServicesSection = () => {
   const [showAll, setShowAll] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [visibleServices, setVisibleServices] = useState<Service[]>([]);
+
+  // Load services progressively based on visibility
+  useEffect(() => {
+    setVisibleServices(showAll ? services : services.slice(0, 8));
+  }, [showAll]);
+
+  // Use Intersection Observer to detect when section is in viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          // Only load images when scrolled into view
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const sectionElement = document.querySelector('.services-section');
+    if (sectionElement) {
+      observer.observe(sectionElement);
+    }
+
+    return () => {
+      if (sectionElement) {
+        observer.unobserve(sectionElement);
+      }
+    };
+  }, []);
 
   const toggleServices = useCallback(() => {
     setIsLoading(true);
-    // Simulate smooth transition
-    setTimeout(() => {
+    // Use requestAnimationFrame for smoother transitions
+    requestAnimationFrame(() => {
       setShowAll(prev => !prev);
-      setIsLoading(false);
-    }, 100);
+      setTimeout(() => setIsLoading(false), 100);
+    });
   }, []);
 
-  const displayedServices = showAll ? services : services.slice(0, 8);
-
   return (
-    <section className="py-16 bg-techlearn-lightblue mb-0">
+    <section className="services-section py-16 bg-techlearn-lightblue">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-2">OUR SERVICES</h2>
-        <p className="text-center mb-12">Trainings we offer</p>
+        <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">OUR SERVICES</h2>
+        <p className="text-base text-gray-600 text-center mb-12">Trainings we offer</p>
         
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 transition-opacity duration-300 ${isLoading ? 'opacity-50' : 'opacity-100'}`}>
-          {displayedServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12`}>
+          {visibleServices.map((service, index) => (
+            <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
         
@@ -194,9 +261,22 @@ const ServicesSection = () => {
           <button 
             onClick={toggleServices}
             disabled={isLoading}
-            className={`bg-indigo-600 text-white px-8 py-3 rounded-md hover:bg-indigo-700 transition-colors ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-md group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
-            {showAll ? 'Show Less' : 'Explore All Courses'}
+            <span className="absolute left-0 w-0 h-full transition-all duration-500 ease-out bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full"></span>
+            <span className="relative flex items-center gap-2">
+              {showAll ? 'Show Less' : 'Explore All Courses'}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  d={showAll ? "M19 9l-7 7-7-7" : "M9 5l7 7-7 7"}
+                />
+              </svg>
+            </span>
           </button>
         </div>
       </div>

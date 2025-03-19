@@ -4,6 +4,7 @@ import { Menu, X, Home, Users, Briefcase, Building2, UserPlus, Mail, FileText } 
 import logo from '../assets/logo.png';
 interface NavBarProps {
   setCurrentSection: (section: string) => void;
+  bgColor?: string; // Add this prop
 }
 
 interface NavItem {
@@ -12,7 +13,7 @@ interface NavItem {
   icon: JSX.Element;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ setCurrentSection }) => {
+const NavBar: React.FC<NavBarProps> = ({ setCurrentSection, bgColor = 'bg-transparent' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,21 +31,21 @@ const NavBar: React.FC<NavBarProps> = ({ setCurrentSection }) => {
   }, []);
 
   const navItems: NavItem[] = [
-    { name: 'Home', path: '/', icon: <Home size={18} /> },
-    { name: 'About Us', path: '/about', icon: <Users size={18} /> },
-    { name: 'Services', path: '/services', icon: <Briefcase size={18} /> },
-    { name: 'Clients', path: '/clients', icon: <Building2 size={18} /> },
-    { name: 'Join Our Team', path: '/join-team', icon: <UserPlus size={18} /> },
-    { name: 'Contact Us', path: '/contact', icon: <Mail size={18} /> },
-    { name: 'Brochure', path: '/brochure', icon: <FileText size={18} /> },
+    { name: 'Home', path: '/', icon: <Home size={20} /> },
+    { name: 'About Us', path: '/about', icon: <Users size={20} /> },
+    { name: 'Services', path: '/services', icon: <Briefcase size={20} /> },
+    { name: 'Clients', path: '/clients', icon: <Building2 size={20} /> },
+    { name: 'Join Our Team', path: '/join-team', icon: <UserPlus size={20} /> },
+    { name: 'Contact Us', path: '/contact', icon: <Mail size={20} /> },
+    { name: 'Brochure', path: '/brochure', icon: <FileText size={20} /> },
   ];
 
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm' : 'bg-transparent'}`}>
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : bgColor}`}>
+      <div className="container mx-auto px-6 py-2 flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Logo" className="h-8" />
+            <img src={logo} alt="Logo" className="h-10" />
           </Link>
         </div>
 
@@ -54,7 +55,7 @@ const NavBar: React.FC<NavBarProps> = ({ setCurrentSection }) => {
             <Link
               key={item.name}
               to={item.path}
-              className="text-black hover:text-techlearn-blue transition-colors font-medium flex items-center gap-2"
+              className="text-black hover:text-techlearn-blue transition-colors text-[15px] flex items-center gap-2"
               onClick={() => setCurrentSection(item.name.toLowerCase())}
             >
               {item.icon}
@@ -78,12 +79,12 @@ const NavBar: React.FC<NavBarProps> = ({ setCurrentSection }) => {
       {/* Mobile Navigation Menu */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg" id="mobile-menu" role="menu">
-          <div className="px-6 pt-2 pb-3 space-y-1">
+          <div className="px-6 py-3 space-y-3">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-black hover:text-techlearn-blue block py-2 font-medium flex items-center gap-2"
+                className="text-black hover:text-techlearn-blue block py-2 text-[15px] flex items-center gap-2"
                 onClick={() => {
                   setCurrentSection(item.name.toLowerCase());
                   setIsOpen(false);

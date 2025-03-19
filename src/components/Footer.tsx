@@ -4,26 +4,26 @@ import companyLogo from '../assets/logo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-10">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-gray-100 py-12">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div>
+          <div className="space-y-4">
             <img 
               src={companyLogo}
               alt="RV TechLearn Logo" 
-              className="h-12 mb-4"
+              className="h-12"
             />
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-sm leading-relaxed">
               Established in India by Mr. Rithik Raj Vaishya, RV TechLearn leverages years of expertise 
               and experience to provide top-notch educational and consulting solutions.
             </p>
           </div>
           
           {/* Quick Links */}
-          <div>
-            <h3 className="font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-800">Quick Links</h3>
+            <ul className="space-y-3">
               <li><Link to="/" className="text-gray-600 hover:text-gray-900 text-sm">Home</Link></li>
               <li><Link to="/about" className="text-gray-600 hover:text-gray-900 text-sm">About Us</Link></li>
               <li><Link to="/services" className="text-gray-600 hover:text-gray-900 text-sm">Services</Link></li>
@@ -35,9 +35,9 @@ const Footer = () => {
           </div>
           
           {/* Popular Courses */}
-          <div>
-            <h3 className="font-bold mb-4">Popular Courses</h3>
-            <ul className="space-y-2">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-800">Popular Courses</h3>
+            <ul className="space-y-4">
               <li className="text-gray-600 text-sm">Generative AI</li>
               <li className="text-gray-600 text-sm">Data Science</li>
               <li className="text-gray-600 text-sm">Artificial Intelligence</li>
@@ -48,11 +48,11 @@ const Footer = () => {
           </div>
           
           {/* Contact Info */}
-          <div>
-            <h3 className="font-bold mb-4">Contact Info</h3>
-            <address className="not-italic space-y-2">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-800">Contact Info</h3>
+            <address className="not-italic space-y-4">
               <div className="flex items-start space-x-3">
-                <MapPin size={18} className="text-gray-600 mt-0.5" />
+                <MapPin size={18} className="text-gray-600 mt-0.5 flex-shrink-0" />
                 <a 
                   href="https://maps.app.goo.gl/1CQwRqm7etWm9esR8" 
                   target="_blank" 
@@ -63,7 +63,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail size={18} className="text-gray-600" />
+                <Mail size={18} className="text-gray-600 flex-shrink-0" />
                 <a 
                   href="mailto:contact@rvtechlearn.com" 
                   className="text-gray-600 hover:text-gray-900 text-sm"
@@ -72,7 +72,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone size={18} className="text-gray-600" />
+                <Phone size={18} className="text-gray-600 flex-shrink-0" />
                 <a 
                   href="tel:+919967482137" 
                   className="text-gray-600 hover:text-gray-900 text-sm"
@@ -85,9 +85,9 @@ const Footer = () => {
         </div>
         
         {/* Footer Bottom */}
-        <div className="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-600 mb-4 md:mb-0">© 2023 RVTechLearn. All rights reserved.</p>
-          <div className="flex space-x-4">
+        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-sm text-gray-600">© 2023 RVTechLearn. All rights reserved.</p>
+          <div className="flex space-x-6">
             <a href="https://www.facebook.com/people/RV-Techlearn/pfbid0AcbxNufJDYRDjrjoesiqGyTYgQyAiE3Q5Nc5bjsk1mMg7Rp67ye8yStRo4nbNXMol/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd"></path>

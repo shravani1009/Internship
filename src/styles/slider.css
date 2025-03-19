@@ -1,0 +1,57 @@
+.slick-dots {
+  bottom: -40px;
+}
+
+.slick-dots li button:before {
+  color: #4f46e5;
+  opacity: 0.3;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #4f46e5;
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #4f46e5;
+  font-size: 24px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  opacity: 1;
+}
+
+.slick-prev {
+  left: -35px;
+}
+
+.slick-next {
+  right: -35px;
+}
+
+/* Add smooth sliding animation */
+.slick-slide {
+  transition: transform 0.3s ease;
+}
+
+/* Custom styles for testimonial cards */
+.testimonial-card {
+  border: 1px solid rgba(79, 70, 229, 0.1);
+  transition: all 0.3s ease;
+  transform: scale(0.95);
+}
+
+.testimonial-card:hover {
+  border-color: rgba(79, 70, 229, 0.2);
+}
+
+.slick-center .testimonial-card {
+  transform: scale(1);
+}
