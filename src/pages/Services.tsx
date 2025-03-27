@@ -269,13 +269,13 @@ const Services = () => {
     <div className="min-h-screen bg-slate-50">
       <div className="relative h-[300px] md:h-[400px] lg:h-[500px] mt-16">
         <img 
-          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==&auto=format&fit=crop&w=2340&q=80"
           alt="Modern technology workspace" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center transform scale-95 brightness-90"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-wider">OUR SERVICES</h1>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-wider mb-4">OUR SERVICES</h1>
+          <p className="text-xl text-white/90">Trainings we offer</p>
         </div>
       </div>
 
@@ -350,7 +350,7 @@ const Services = () => {
               <Slider {...sliderSettings}>
                 {testimonials.map((testimonial) => (
                   <div key={testimonial.id} className="px-4 pb-4">
-                    <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow relative">
+                    <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow relative h-[300px] flex flex-col">
                       <div className="absolute -top-4 left-8 w-8 h-8 bg-indigo-600 transform rotate-45"></div>
                       <div className="flex items-center gap-4 mb-6">
                         <div className="relative">
@@ -370,8 +370,8 @@ const Services = () => {
                           <p className="text-indigo-600 font-medium">{testimonial.role}</p>
                         </div>
                       </div>
-                      <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
-                      <div className="flex gap-1">
+                      <p className="text-gray-600 mb-6 italic line-clamp-4">{testimonial.content}</p>
+                      <div className="flex gap-1 mt-auto">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <StarIcon key={i} className="w-5 h-5 fill-current text-indigo-500" />
                         ))}

@@ -21,10 +21,10 @@ const Index = () => {
       <section className="bg-techlearn-background">
         <HeroSection />
       </section>
-      <section className="py-12 bg-techlearn-lightblue">
+      <section className="py-8 bg-techlearn-lightblue">
         <StatsSection />
       </section>
-      <section className="py-3 bg-techlearn-background">
+      <section className="py-1 bg-techlearn-background">
         <AboutSection />
       </section>
       <section className="py-7 bg-techlearn-lightblue">

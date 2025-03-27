@@ -1,8 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import companyLogo from '../assets/logo.png';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-gray-100 py-12">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -24,13 +31,13 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-gray-800">Quick Links</h3>
             <ul className="space-y-3">
-              <li><Link to="/" className="text-gray-600 hover:text-gray-900 text-sm">Home</Link></li>
-              <li><Link to="/about" className="text-gray-600 hover:text-gray-900 text-sm">About Us</Link></li>
-              <li><Link to="/services" className="text-gray-600 hover:text-gray-900 text-sm">Services</Link></li>
-              <li><Link to="/clients" className="text-gray-600 hover:text-gray-900 text-sm">Clients</Link></li>
-              <li><Link to="/join-team" className="text-gray-600 hover:text-gray-900 text-sm">Join Our Team</Link></li>
-              <li><Link to="/contact" className="text-gray-600 hover:text-gray-900 text-sm">Contact Us</Link></li>
-              <li><Link to="/brochure" className="text-gray-600 hover:text-gray-900 text-sm">Brochure</Link></li>
+              <li><button onClick={() => handleNavigation('/')} className="text-gray-600 hover:text-gray-900 text-sm">Home</button></li>
+              <li><button onClick={() => handleNavigation('/about')} className="text-gray-600 hover:text-gray-900 text-sm">About Us</button></li>
+              <li><button onClick={() => handleNavigation('/services')} className="text-gray-600 hover:text-gray-900 text-sm">Services</button></li>
+              <li><button onClick={() => handleNavigation('/clients')} className="text-gray-600 hover:text-gray-900 text-sm">Clients</button></li>
+              <li><button onClick={() => handleNavigation('/join-team')} className="text-gray-600 hover:text-gray-900 text-sm">Join Our Team</button></li>
+              <li><button onClick={() => handleNavigation('/contact')} className="text-gray-600 hover:text-gray-900 text-sm">Contact Us</button></li>
+              <li><button onClick={() => handleNavigation('/brochure')} className="text-gray-600 hover:text-gray-900 text-sm">Brochure</button></li>
             </ul>
           </div>
           

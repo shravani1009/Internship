@@ -73,7 +73,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-8 -mt-12 relative z-10">
+    <section ref={sectionRef} className="py-8 -mt-4 relative z-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {stats.map((stat, index) => (

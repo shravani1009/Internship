@@ -12,16 +12,16 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section with Image and Overlay Text */}
+      {/* Hero Section */}
       <div className="relative h-[300px] md:h-[400px] lg:h-[500px] mt-16">
         <img 
-          src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+          src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==&auto=format&fit=crop&w=2340&q=80"
           alt="Professional training and development session" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center transform scale-95 brightness-90"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-wider">ABOUT US</h1>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-wider mb-4">ABOUT US</h1>
+          <p className="text-xl text-white/90">Learn, Innovate & Succeed</p>
         </div>
       </div>
 
