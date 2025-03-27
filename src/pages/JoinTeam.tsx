@@ -78,10 +78,7 @@ const JoinTeam = () => {
           alt="Team collaboration and growth"
           className="w-full h-full object-cover object-center transform scale-95 brightness-90"
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-wider mb-4">JOIN OUR TEAM</h1>
-          <p className="text-xl text-white/90">Unleash your potential with us, where innovation meets opportunity</p>
-        </div>
+       
       </div>
 
       {/* Introduction Section */}
