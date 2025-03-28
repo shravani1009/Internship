@@ -9,16 +9,17 @@ const HeroSection = () => {
 
   return (
     <section
-      className="mt-16 pt-32 pb-24 bg-techlearn-lightblue"
+      className="relative mt-16 pt-32 pb-24 bg-techlearn-lightblue min-h-screen"
       style={{
         backgroundImage: `url(${hero})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        minHeight: '100vh'
+        backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="container mx-auto px-6 text-left">
+      <div className="absolute inset-0 bg-black opacity-50"></div>  {/* Added dark overlay for readability */}
+
+      <div className="relative z-10 container mx-auto px-6 text-left">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white animate-fade-in">Learn. Grow. Succeed.</h1>
         <p className="text-base md:text-lg text-white mb-8 animate-fade-in">Explore top-notch tech courses and boost your skills.</p>
         

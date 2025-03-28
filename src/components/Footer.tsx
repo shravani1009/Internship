@@ -11,11 +11,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-100 py-12">
+    <footer className="bg-gray-100 py-12 font-serif">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-4"> {/* Removed text-center */}
             <img 
               src={companyLogo}
               alt="RV TechLearn Logo" 
@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
           
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-4"> {/* Removed text-center */}
             <h3 className="text-xl font-bold text-gray-800">Quick Links</h3>
             <ul className="space-y-3">
               <li><button onClick={() => handleNavigation('/')} className="text-gray-600 hover:text-gray-900 text-sm">Home</button></li>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
           
           {/* Popular Courses */}
-          <div className="space-y-4">
+          <div className="space-y-4"> {/* Removed text-center */}
             <h3 className="text-xl font-bold text-gray-800">Popular Courses</h3>
             <ul className="space-y-4">
               <li className="text-gray-600 text-sm">Generative AI</li>
@@ -55,7 +55,7 @@ const Footer = () => {
           </div>
           
           {/* Contact Info */}
-          <div className="space-y-4">
+          <div className="space-y-4"> {/* Removed text-center */}
             <h3 className="text-xl font-bold text-gray-800">Contact Info</h3>
             <address className="not-italic space-y-4">
               <div className="flex items-start space-x-3">
@@ -92,8 +92,8 @@ const Footer = () => {
         </div>
         
         {/* Footer Bottom */}
-        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-sm text-gray-600">© 2023 RVTechLearn. All rights reserved.</p>
+        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-center md:justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-sm text-gray-600">© RVTechLearn. All rights reserved.</p>
           <div className="flex space-x-6">
             <a href="https://www.facebook.com/people/RV-Techlearn/pfbid0AcbxNufJDYRDjrjoesiqGyTYgQyAiE3Q5Nc5bjsk1mMg7Rp67ye8yStRo4nbNXMol/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
